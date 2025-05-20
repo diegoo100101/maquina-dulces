@@ -1,5 +1,5 @@
 import { Dulce } from "../../models/Dulce";
-import { ErrorNoExists, ErrorNoMoney, ErrorNoStock } from "../../models/Errores";
+import { ErrorNoExists, ErrorNoMoney, ErrorNoStock, ErrorNoUserAdmin } from "../../models/Errores";
 import { Usuario } from "../../models/Usuario";
 import { InformacionDulces } from "../../utils/InformacionDulce";
 import { IMaquina } from "../IMaquina";
@@ -39,16 +39,13 @@ export class Maquina implements IMaquina {
     }
 
     public mostrarVentas(usuario: Usuario): void {
-        if (this.esUsuarioAdmin(usuario)) {
-            console.log(`Ingreso total: $${this.ingreso}`);
-            this.inventario.dulces.forEach(item => console.log(`Dulce: ${item.nombre} Cantidad vendidos: ${item.cantidadVendidos}`))
-        } else {
-            console.log(`Permiso denegado`);
+        if (!ErrorNoUserAdmin.esAdmin(usuario)) {
+            ErrorNoUserAdmin.mostrarMensaje();
+            return
         }
-    }
 
-    private esUsuarioAdmin(usuario: Usuario): boolean {
-        return usuario.rol === 'admin';
+        console.log(`Ingreso total: $${this.ingreso}`);
+        this.inventario.dulces.forEach(item => console.log(`Dulce: ${item.nombre} Cantidad vendidos: ${item.cantidadVendidos}`))
     }
 
     public mostrarDulces(): void {

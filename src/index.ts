@@ -3,9 +3,9 @@ import { Usuario } from "./app/models/Usuario";
 import { Inventario } from "./app/services/impl/Inventario";
 import { Maquina } from "./app/services/impl/Maquina";
 
-let sneakers = new Dulce("sneakers", "snk", 20, 60);
-let mazapan = new Dulce("mazapan", "maza", 5, 1);
-let refresco = new Dulce("pepsi", "ppsi", 20, 1);
+let sneakers = new Dulce("Sneakers", "snk", 20, 60);
+let mazapan = new Dulce("Mazapan", "maza", 5, 1);
+let refresco = new Dulce("Pepsi", "ppsi", 20, 1);
 
 let dulces: Dulce[] = [sneakers, mazapan, refresco];
 

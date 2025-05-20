@@ -1,7 +1,10 @@
 import { Dulce } from "./Dulce";
+import { Usuario } from "./Usuario";
 
 abstract class Error {
-    static mostrarMensaje() : void {};
+    static mostrarMensaje() : void {
+        console.log()
+    };
 }
 
 export class ErrorNoStock extends Error {
@@ -34,5 +37,14 @@ export class ErrorNoExists implements Error {
     static mostrarMensaje(): void {
         console.log("El producto no existe");
     }
+}
 
+export class ErrorNoUserAdmin implements Error {
+    static esAdmin(usuario: Usuario): boolean {
+        return usuario.rol === 'admin';
+    }
+
+    static mostrarMensaje(): void {
+        console.log('Permiso denegado');
+    }
 }
