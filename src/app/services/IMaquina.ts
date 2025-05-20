@@ -7,7 +7,7 @@ export interface IMaquina {
     inventario: Inventario;
     ingreso: number;
 
-    venderDulce(codigo: string): void;
+    venderDulce(codigo: string, pago: number): void;
     mostrarVentas(usuario: Usuario): void;
     mostrarDulces(): void;
 }
