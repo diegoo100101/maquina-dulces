@@ -1,0 +1,25 @@
+{
+  "name": "maquina-dulces",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegoo100101/maquina-dulces.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diegoo100101/maquina-dulces/issues"
+  },
+  "homepage": "https://github.com/diegoo100101/maquina-dulces#readme",
+  "description": ""
+}
