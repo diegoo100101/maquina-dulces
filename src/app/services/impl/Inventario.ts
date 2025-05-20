@@ -4,17 +4,17 @@ import { IInventario } from "../IInventario";
 
 export class Inventario implements IInventario {
 
-    dulces: Dulce[];
+    public dulces: Dulce[];
 
     constructor(dulces: Dulce[]) {
         this.dulces = dulces;
     }
 
-    obtenerDulce(codigo: string): Dulce | undefined {
+    public obtenerDulce(codigo: string): Dulce | undefined{
         return this.dulces.find(item => item.codigo === codigo);
     }
 
-    mostrarDulces(): void {
+    public mostrarDulces(): void {
         this.dulces.forEach(item => InformacionDulces.imprimirInformacionDulce(item));
     }
 }

@@ -7,14 +7,14 @@ import { Inventario } from "./Inventario";
 
 export class Maquina implements IMaquina {
 
-    inventario: Inventario;
-    ingreso: number = 0;
+    public inventario: Inventario;
+    public ingreso: number = 0;
 
     constructor(inventario: Inventario) {
         this.inventario = inventario;
     }
 
-    venderDulce(codigo: string, pago: number): void {
+    public venderDulce(codigo: string, pago: number): void {
         let dulce = this.inventario.obtenerDulce(codigo);
         
         if(!ErrorNoExists.existeDulce(dulce)) {
@@ -38,7 +38,7 @@ export class Maquina implements IMaquina {
         console.log('¡Venta exitosa!');
     }
 
-    mostrarVentas(usuario: Usuario): void {
+    public mostrarVentas(usuario: Usuario): void {
         if (this.esUsuarioAdmin(usuario)) {
             console.log(`Ingreso total: $${this.ingreso}`);
             this.inventario.dulces.forEach(item => console.log(`Dulce: ${item.nombre} Cantidad vendidos: ${item.cantidadVendidos}`))
@@ -51,7 +51,7 @@ export class Maquina implements IMaquina {
         return usuario.rol === 'admin';
     }
 
-    mostrarDulces(): void {
+    public mostrarDulces(): void {
         console.log('-------------------------------------')
         this.inventario.mostrarDulces();
         console.log('-------------------------------------')
