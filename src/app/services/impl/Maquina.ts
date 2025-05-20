@@ -52,7 +52,9 @@ export class Maquina implements IMaquina {
     }
 
     mostrarDulces(): void {
+        console.log('-------------------------------------')
         this.inventario.mostrarDulces();
+        console.log('-------------------------------------')
     }
 
 }
