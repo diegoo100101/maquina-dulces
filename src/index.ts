@@ -12,13 +12,16 @@ let dulces: Dulce[] = [sneakers, mazapan, refresco];
 let inventario: Inventario = new Inventario(dulces)
 let maquinaExpendedora: Maquina = new Maquina(inventario);
 
-// maquinaExpendedora.mostrarDulces()
+maquinaExpendedora.mostrarDulces()
 
+maquinaExpendedora.venderDulce("snk", 30);
+maquinaExpendedora.venderDulce("snk", 1);
+maquinaExpendedora.venderDulce("maza", 5);
 maquinaExpendedora.venderDulce("ppsi", 30);
-maquinaExpendedora.venderDulce("ppsi", 10);
+maquinaExpendedora.venderDulce("ppsi", 5);
 
-// maquinaExpendedora.mostrarDulces()
+let usuarioAdmin: Usuario = new Usuario("Diego", "admin");
+let usuarioNormal: Usuario = new Usuario("Vic", "normal");
 
-let usuario: Usuario = new Usuario("Diego", "admin");
-
-maquinaExpendedora.mostrarVentas(usuario)
+maquinaExpendedora.mostrarVentas(usuarioAdmin)
+maquinaExpendedora.mostrarVentas(usuarioNormal)

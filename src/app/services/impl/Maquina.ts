@@ -1,4 +1,5 @@
 import { Dulce } from "../../models/Dulce";
+import { ErrorNoExists, ErrorNoMoney, ErrorNoStock } from "../../models/Errores";
 import { Usuario } from "../../models/Usuario";
 import { InformacionDulces } from "../../utils/InformacionDulce";
 import { IMaquina } from "../IMaquina";
@@ -15,13 +16,26 @@ export class Maquina implements IMaquina {
 
     venderDulce(codigo: string, pago: number): void {
         let dulce = this.inventario.obtenerDulce(codigo);
-        if (dulce && dulce.cantidad > 0 && dulce.precio < pago) {
-            dulce.aumentarVendidos();
-            dulce.restarCantidad();
-            this.ingreso += dulce?.precio ? dulce.precio : 0;
-        } else {
-            console.log("No hay stock, el artículo no existe o el pago fue menor al precio");
+        
+        if(!ErrorNoExists.existeDulce(dulce)) {
+            ErrorNoExists.mostrarMensaje();
+            return
         }
+
+        if(!ErrorNoStock.existeStock(dulce)) {
+            ErrorNoStock.mostrarMensaje();
+            return
+        }
+
+        if(!ErrorNoMoney.esSaldoSuficiente(dulce, pago)) {
+            ErrorNoMoney.mostrarMensaje();
+            return
+        }
+
+        dulce?.aumentarVendidos();
+        dulce?.restarCantidad();
+        this.ingreso += dulce?.precio ? dulce.precio : 0;
+        console.log('¡Venta exitosa!');
     }
 
     mostrarVentas(usuario: Usuario): void {

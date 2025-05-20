@@ -10,7 +10,7 @@ export class Inventario implements IInventario {
         this.dulces = dulces;
     }
 
-    obtenerDulce(codigo: string): Dulce | undefined{
+    obtenerDulce(codigo: string): Dulce | undefined {
         return this.dulces.find(item => item.codigo === codigo);
     }
 
